@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 import { Tienda } from "./pages/Tienda/Tienda";
 import { Cart } from "./pages/Carrito/cart";
 import { TIENDAContextProvider } from "./Context/TiendaContext"
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <TIENDAContextProvider>
-        <Router>
+
           <Navbar />
            <Routes>
               <Route path="/" element={ <Inicio />} /> 
@@ -19,7 +19,7 @@ function App() {
               <Route path="/Nosotros" element={ <Nosotros /> } />
               <Route path="/cart" element={<Cart />} />
             </Routes>
-        </Router>
+            
       </TIENDAContextProvider>
     </div>
   );
