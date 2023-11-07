@@ -1,5 +1,8 @@
+import React from "react"
+import "./Inicio.css";
+
 export function Inicio() {
   return (
-  <h1> inicio </h1>
+  <h1> Premier Plus </h1>
   ) 
 }

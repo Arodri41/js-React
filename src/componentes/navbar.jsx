@@ -7,9 +7,10 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> Tienda </Link>
+        <Link to="/"> Home </Link>
+        <Link to="/Tienda"> Tienda </Link>
         <Link to="/Nosotros"> Nosotros </Link>
-        <Link to="/ShoppingCart">
+        <Link to="/cart">
           <ShoppingCart size={32} />
         </Link>
       </div>
