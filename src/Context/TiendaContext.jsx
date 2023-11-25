@@ -1,58 +1,84 @@
-import { createContext, useState } from "react";
-import { PRODUCTOS } from "../items/productos";
+import { createContext, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const TIENDAContext = createContext(null);
+export const Context = createContext();
 
-const getDefaultCart = () => {
-  let cart = {};
-  for (let i = 1; i < PRODUCTOS.length + 1; i++) {
-    cart[i] = 0;
-  }
-  return cart;
-};
+export function TIENDAContext({children}) {
+    const [cart, setCart] = useState(() => {
+		const storageCart = localStorage.getItem('Cart');
+		const savedCart = JSON.parse(storageCart);
+		return savedCart || [];
+	});
+    const [ quantity, setQuantity ] = useState(0);
+    const [ total, setTotal ] = useState(0);
 
-export const TIENDAContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
-
-  const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        let itemInfo = PRODUCTOS.find((Producto) => Producto.id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.price;
-      }
+    const setToastify = (text) => {
+        toast.success(text, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
-    return totalAmount;
-  };
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-  };
+    useEffect(() => {
+        let qtyCart = 0;
+        let totalCart = 0;
+        cart.forEach((item) => {
+            qtyCart += item.quantity;
+            totalCart += item.price * item.quantity;
+        });
+        setQuantity(qtyCart);
+        setTotal(totalCart)
+        localStorage.setItem('Cart', JSON.stringify(cart));
+    }, [ cart ]);
 
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  };
+    const addItem = (item, qty) => {
+        if (isInCart(item.id)) {
+            const updatedCart = cart.map((product) =>
+                product.id === item.id ? (
+                    {...product, quantity: product.quantity + qty}
+                ) : (
+                    product
+                )
+            )
+            setCart(updatedCart);
+        } else {
+            setCart([...cart, {...item, quantity: qty}])
+            setQuantity(quantity + qty)
+        }
+        setToastify("Producto agregado al carrito.")
+    }
 
-  const updateCartItemCount = (newAmount, itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
-  };
+    const removeItem = (itemId) => {
+        setCart(cart.filter((item) => item.id !== itemId));
+        setToastify("Producto eliminado del carrito.")
+    }
 
-  const checkout = () => {
-    setCartItems(getDefaultCart());
-  };
+    const clear = () => {
+        setCart([]);
+        setQuantity(0);
+        setTotal(0);
+        setToastify("Se ha vaciado el carrito exitosamente.")
+    }
 
-  const contextValue = {
-    cartItems,
-    addToCart,
-    updateCartItemCount,
-    removeFromCart,
-    getTotalCartAmount,
-    checkout,
-  };
+    const isInCart = (itemId) => cart.some((item) => item.id === itemId);
+    
+    // Estado que guarda la lista de productos para la barra buscadora del Navbar
+    const [ data, setData ] = useState([]);
+    const itemList = (list) => {
+        setData(list);
+    } 
 
-  return (
-    <TIENDAContext.Provider value={contextValue}>
-      {props.children}
-    </TIENDAContext.Provider>
-  );
-};
+    return (
+        <Context.Provider value={{ cart, quantity, total, addItem, removeItem, clear, isInCart, data, itemList }}>
+            {children}
+            <ToastContainer />
+        </Context.Provider>
+    )
+}
