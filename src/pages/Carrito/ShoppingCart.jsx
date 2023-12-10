@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { TIENDAContext } from '../../Context/TiendaContext';
+import { Context } from '../../Context/TiendaContext';
 import { Link } from 'react-router-dom';
 import { CartItem } from "./CartItem";
 import { db } from "../../services/firebase"
@@ -7,7 +7,7 @@ import { collection, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/fi
 
 
 function CartViewContainer() {
-    const { quantity, cart, total, clear } = useContext(TIENDAContext);
+    const { quantity, cart, total, clear } = useContext(Context);
     const [ buyer, setBuyer ] = useState({});
     const [ loading, setLoading ] = useState(false);
 
@@ -18,10 +18,10 @@ function CartViewContainer() {
         cart.forEach((item) => {
             items.push({
                 id: item.id,
-                title: item.title,
+                title: item.name,
                 description: item.description,
                 price: item.price,
-                image: item.image,
+                image: item.img,
                 quantity: item.quantity
             })
         })

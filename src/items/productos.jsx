@@ -12,6 +12,7 @@ export const products = [
         "description": "El extintor de polvo ABC o polvo seco es eficaz para actuar contra incendios producidos por: Combustibles sólidos, conocidos como fuego tipo A o fuegos secos. Combustibles líquidos, clasificados como fuego tipo B. Combustibles gaseosos, identificados como fuego tipo C.",
         "price": 28.000,
         "img": producto1,
+        "quantity": 33,
     },
     {
         "id": 2,
@@ -19,6 +20,8 @@ export const products = [
         "description": "El extintor de polvo ABC o polvo seco es eficaz para actuar contra incendios producidos por: Combustibles sólidos, conocidos como fuego tipo A o fuegos secos. Combustibles líquidos, clasificados como fuego tipo B. Combustibles gaseosos, identificados como fuego tipo C.",
         "price": 50.000,
         "img": producto2,
+        "quantity": 25,
+
     },
     {
         "id": 3,
@@ -26,6 +29,8 @@ export const products = [
         "description": "El extintor de polvo ABC o polvo seco es eficaz para actuar contra incendios producidos por: Combustibles sólidos, conocidos como fuego tipo A o fuegos secos. Combustibles líquidos, clasificados como fuego tipo B. Combustibles gaseosos, identificados como fuego tipo C.",
         "price": 75.000,
         "img": producto3,
+        "quantity": 17,
+
     },
     {
         "id": 4,
@@ -33,6 +38,8 @@ export const products = [
         "description": "Los Matafuegos (Extintores) a base de CO2 deben usarse únicamente para extinguir fuegos Clase B o C. Son poco efectivos para fuegos Clase A. Son diseñados para proteger áreas que contienen riesgos de incendio Clase B (combustibles líquidos y gaseosos) y Clase C (equipos eléctricos energizados)." ,
         "price": 50.000,
         "img": producto4,
+        "quantity": 11,
+
     },
     {
         "id": 5,
@@ -40,6 +47,8 @@ export const products = [
         "description": "Los Matafuegos (Extintores) a base de CO2 deben usarse únicamente para extinguir fuegos Clase B o C. Son poco efectivos para fuegos Clase A. Son diseñados para proteger áreas que contienen riesgos de incendio Clase B (combustibles líquidos y gaseosos) y Clase C (equipos eléctricos energizados)." ,
         "price": 70.000,
         "img": producto5,
+        "quantity": 9,
+
     },
     {
         "id": 6,
@@ -47,6 +56,8 @@ export const products = [
         "description": "Los Matafuegos (Extintores) a base de CO2 deben usarse únicamente para extinguir fuegos Clase B o C. Son poco efectivos para fuegos Clase A. Son diseñados para proteger áreas que contienen riesgos de incendio Clase B (combustibles líquidos y gaseosos) y Clase C (equipos eléctricos energizados).",
         "price": 100.000,
         "img": producto6,
+        "quantity": 15,
+
     }
     
 

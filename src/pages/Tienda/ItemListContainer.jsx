@@ -4,7 +4,7 @@ import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import {ItemList} from "./ItemList";
 import { TIENDAContext } from '../../Context/TiendaContext';
-import 
+
 
 function ItemListContainer({greeting}) {
   const [ products, setProducts ] = useState([]);

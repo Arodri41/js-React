@@ -2,6 +2,8 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from '../Tienda/itemCount';
 import { TIENDAContext } from '../../Context/TiendaContext';
+import product from './product';
+import products from '../../items/productos';
 
 function ItemDetail({product}) {
     const [ showItemCount, setShowItemCount ] = useState(true);

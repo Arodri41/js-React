@@ -1,17 +1,14 @@
-import Item from './Item';
-import product from './product';
-import products from '../../items/productos';
+import Item from "./Item";
+import { Box } from "@mui/material";
 
-function ItemList({products}) {
-    return (
-        <article className="itemList">
-            {
-                products.map((product) =>
-                    <Item key={product.id} product={product} />
-                )
-            }
-        </article>
-    )
-}
+const ItemList = ({ products }) => {
+  return (
+    <Box className="d-flex row justify-content-center m-3">
+      {products.map((product) => {
+        return <Item key={product.id} item={product} />;
+      })}
+    </Box>
+  );
+};
 
-export default ItemList
+export default ItemList;

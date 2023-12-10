@@ -1,21 +1,19 @@
-import React, { useContext } from "react";
+import React from 'react';
+import productos from '../../items/productos';
 
-
-export const product = (props) => {
-  const { id, name, price, img } = props.data;
- 
-
-
+const product = () => {
   return (
-    <div className="product">
-      <img src={img} />
-      <div className="descricion">
-        <p>
-          <b>{name}</b>
-        </p>
-        <p> ${price}</p>
-      </div>
+    <div>
+      <h1>Productos</h1>
+      <ul>
+        {productos.map(productos => (
+          <li key={productos.id}>
+            {productos.name} - ${productos.price}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
-export default product
+
+export default product;

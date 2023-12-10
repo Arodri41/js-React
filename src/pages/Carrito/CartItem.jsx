@@ -1,23 +1,21 @@
 import { useContext } from 'react';
-import { TIENDAContext } from '../../Context/TiendaContext';
+import { Context } from '../../Context/TiendaContext';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Link } from 'react-router-dom';
-import { product } from '../Tienda/product';
-import { products } from '../../items/productos';
-import context from 'react-bootstrap/esm/AccordionContext';
+
 
 function CartItem({product, isOrderView}) {
 
-    const { removeItem } = useContext(context);
+    const { removeItem } = useContext(Context);
 
     return (
         <article className="cartItem">
             <picture className="cartItem__img">
-                <img src={product.image} alt={product.title} />
+                <img src={product.img} alt={product.name} />
             </picture>
             <div className="cartItem__info">
                 <Link to={"/producto/" + product.id}>
-                    <h3 className="info__title">{product.title}</h3>
+                    <h3 className="info__title">{product.name}</h3>
                 </Link>
                 <p className="info__description">{product.description}</p>
             </div>
