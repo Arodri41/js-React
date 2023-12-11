@@ -90,4 +90,6 @@ function CartViewContainer() {
     )
 }
 
-export default CartViewContainer
+export default CartViewContainer;
+
+export { CartViewContainer }

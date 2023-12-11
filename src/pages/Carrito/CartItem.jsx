@@ -36,4 +36,6 @@ function CartItem({product, isOrderView}) {
     )
 }
 
-export default CartItem
+export default CartItem;
+
+export { CartItem }

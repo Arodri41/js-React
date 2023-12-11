@@ -1,7 +1,7 @@
 import { BrowserRouter as  Routes, Route } from "react-router-dom";
-import { ItemListContainer } from "./pages/Tienda/ItemList";
+import { ItemListContainer } from "./pages/Tienda/ItemListContainer";
 import { ItemDetailContainer } from "./pages/Tienda/ItemDetailContainer";
-import { TIENDAContextProvider } from "./Context/TiendaContext";
+import { Context } from "./Context/TiendaContext";
 import { Navbar } from "./componentes/navbar";
 import Error404 from "./pages/page 404/Error404";
 import { CategoriesContext } from './Context/CategoriesContext';
@@ -12,7 +12,7 @@ import "./App.css"
 function App() {
   return (
     <div className="App">
-    <TIENDAContextProvider>
+    <Context>
       <CategoriesContext>
         <Navbar />
 
@@ -26,7 +26,7 @@ function App() {
 
       </CategoriesContext>
     
-    </TIENDAContextProvider>
+    </Context>
   </div>
   );
 }

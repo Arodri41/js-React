@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import {ItemList} from "./ItemList";
+import { ItemList } from "./ItemList";
 import { TIENDAContext } from '../../Context/TiendaContext';
 
 
@@ -56,4 +56,6 @@ function ItemListContainer({greeting}) {
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;
+
+export {ItemListContainer}

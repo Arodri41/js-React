@@ -80,5 +80,7 @@ export function TIENDAContext({children}) {
             {children}
             <ToastContainer />
         </Context.Provider>
+    
     )
 }
+

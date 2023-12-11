@@ -10,4 +10,4 @@ function Error404() {
     )
 }
 
-export default Page404
+export default Error404
